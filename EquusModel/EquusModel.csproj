@@ -199,22 +199,11 @@
   -->
   <ItemGroup>
     <Compile Include="Control\AddInMethods.cs" />
-    <Compile Include="Migrations\201404112244357_Migration_1.cs" />
-    <Compile Include="Migrations\201404112244357_Migration_1.Designer.cs">
-      <DependentUpon>201404112244357_Migration_1.cs</DependentUpon>
+    <Compile Include="Migrations\201404161436014_Initial.cs" />
+    <Compile Include="Migrations\201404161436014_Initial.Designer.cs">
+      <DependentUpon>201404161436014_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404142031410_Migration2.cs" />
-    <Compile Include="Migrations\201404142031410_Migration2.Designer.cs">
-      <DependentUpon>201404142031410_Migration2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404161314170_Migration3.cs" />
-    <Compile Include="Migrations\201404161314170_Migration3.Designer.cs">
-      <DependentUpon>201404161314170_Migration3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201404161329441_RecreateFoodNutrient.cs" />
-    <Compile Include="Migrations\201404161329441_RecreateFoodNutrient.Designer.cs">
-      <DependentUpon>201404161329441_RecreateFoodNutrient.cs</DependentUpon>
-    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityBase.cs" />
     <Compile Include="Models\TransportSample.cs" />
     <Compile Include="OptimizationManagerRibbon.cs">
@@ -242,11 +231,6 @@
       <DependentUpon>OptimizationManagerTaskPane.cs</DependentUpon>
     </Compile>
     <Compile Include="Control\SolverProperty.cs" />
-    <Compile Include="Migrations\201404111418329_InitialCreate.cs" />
-    <Compile Include="Migrations\201404111418329_InitialCreate.Designer.cs">
-      <DependentUpon>201404111418329_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Food.cs" />
     <Compile Include="Models\FoodCharacteristic.cs" />
     <Compile Include="Models\ModelContext.cs" />
@@ -263,20 +247,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_EquusModel_Models_ModelContextDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\201404111418329_InitialCreate.resx">
-      <DependentUpon>201404111418329_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404112244357_Migration_1.resx">
-      <DependentUpon>201404112244357_Migration_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404142031410_Migration2.resx">
-      <DependentUpon>201404142031410_Migration2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404161314170_Migration3.resx">
-      <DependentUpon>201404161314170_Migration3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404161329441_RecreateFoodNutrient.resx">
-      <DependentUpon>201404161329441_RecreateFoodNutrient.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201404161436014_Initial.resx">
+      <DependentUpon>201404161436014_Initial.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OptimizationManagerRibbon.resx">
       <DependentUpon>OptimizationManagerRibbon.cs</DependentUpon>
@@ -347,6 +319,7 @@
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

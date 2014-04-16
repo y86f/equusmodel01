@@ -21,6 +21,8 @@ namespace EquusModel.Models
         {
             ModelContext context = this;
 
+            //  This method will be called after migrating to the latest version.
+
             //if (System.Diagnostics.Debugger.IsAttached == false) { }
             //    System.Diagnostics.Debugger.Launch(); 
 
@@ -46,7 +48,7 @@ namespace EquusModel.Models
 
             for (int i = 0; i < nFoods; i++)
             {
-                food[i] = new Food() { ID = (i + 1), Description = String.Format("Food {0}", i) };
+                food[i] = new Food() { ID = i, Description = String.Format("Food {0}", i) };
                 foodChar[i] = new FoodCharacteristic
                 {
                     FoodID = i,
@@ -58,12 +60,27 @@ namespace EquusModel.Models
                 {
                     if (temp)
                     {
-                        nutr[j] = new Nutrient() { ID = (j + 1), Description = String.Format("Nutrient {0}", j) };
+                        nutr[j] =
+                            new Nutrient()
+                            {
+                                ID = j,
+                                Description = String.Format("Nutrient {0}", j)
+                            };
                         nutrChar[j] =
-                            new NutrientCharacteristic { NutrientID = j, MinNutrient = r.Next(0, 20), MaxNutrient = r.Next(20, 30) };
+                            new NutrientCharacteristic
+                            {
+                                NutrientID = j,
+                                MinNutrient = r.Next(0, 20),
+                                MaxNutrient = r.Next(20, 30)
+                            };
                     }
                     nfRel[i * nNutrients + j] =
-                        new N_F_Relation { NutrientID = j, FoodID = i, NutrientPerFood = r.Next(0, 4) };
+                        new N_F_Relation
+                        {
+                            FoodID = i,
+                            NutrientID = j,
+                            NutrientPerFood = r.Next(0, 4)
+                        };
                 }
                 temp = false;
             }

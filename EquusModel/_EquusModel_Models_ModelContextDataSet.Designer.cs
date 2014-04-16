@@ -38,6 +38,16 @@ namespace EquusModel {
         
         private N_F_RelationDataTable tableN_F_Relation;
         
+        private global::System.Data.DataRelation relationFK_Foods_FoodCharacteristics;
+        
+        private global::System.Data.DataRelation relationFK_Nutrients_NutrientCharacteristics;
+        
+        private global::System.Data.DataRelation relationFK_Foods_V_FoodQuantity;
+        
+        private global::System.Data.DataRelation relationFK_Nutrients_N_F_Relation;
+        
+        private global::System.Data.DataRelation relationFK_Foods_N_F_Relation;
+        
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -338,6 +348,11 @@ namespace EquusModel {
                     this.tableN_F_Relation.InitVars();
                 }
             }
+            this.relationFK_Foods_FoodCharacteristics = this.Relations["FK_Foods_FoodCharacteristics"];
+            this.relationFK_Nutrients_NutrientCharacteristics = this.Relations["FK_Nutrients_NutrientCharacteristics"];
+            this.relationFK_Foods_V_FoodQuantity = this.Relations["FK_Foods_V_FoodQuantity"];
+            this.relationFK_Nutrients_N_F_Relation = this.Relations["FK_Nutrients_N_F_Relation"];
+            this.relationFK_Foods_N_F_Relation = this.Relations["FK_Foods_N_F_Relation"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -362,6 +377,62 @@ namespace EquusModel {
             base.Tables.Add(this.tableV_FoodQuantity);
             this.tableN_F_Relation = new N_F_RelationDataTable();
             base.Tables.Add(this.tableN_F_Relation);
+            global::System.Data.ForeignKeyConstraint fkc;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Foods_FoodCharacteristics", new global::System.Data.DataColumn[] {
+                        this.tableFoods.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFoodCharacteristics.FoodIDColumn});
+            this.tableFoodCharacteristics.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Nutrients_NutrientCharacteristics", new global::System.Data.DataColumn[] {
+                        this.tableNutrients.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNutrientCharacteristics.NutrientIDColumn});
+            this.tableNutrientCharacteristics.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Foods_V_FoodQuantity", new global::System.Data.DataColumn[] {
+                        this.tableFoods.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableV_FoodQuantity.FoodIDColumn});
+            this.tableV_FoodQuantity.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Nutrients_N_F_Relation", new global::System.Data.DataColumn[] {
+                        this.tableNutrients.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableN_F_Relation.NutrientIDColumn});
+            this.tableN_F_Relation.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            fkc = new global::System.Data.ForeignKeyConstraint("FK_Foods_N_F_Relation", new global::System.Data.DataColumn[] {
+                        this.tableFoods.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableN_F_Relation.FoodIDColumn});
+            this.tableN_F_Relation.Constraints.Add(fkc);
+            fkc.AcceptRejectRule = global::System.Data.AcceptRejectRule.None;
+            fkc.DeleteRule = global::System.Data.Rule.Cascade;
+            fkc.UpdateRule = global::System.Data.Rule.Cascade;
+            this.relationFK_Foods_FoodCharacteristics = new global::System.Data.DataRelation("FK_Foods_FoodCharacteristics", new global::System.Data.DataColumn[] {
+                        this.tableFoods.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableFoodCharacteristics.FoodIDColumn}, false);
+            this.Relations.Add(this.relationFK_Foods_FoodCharacteristics);
+            this.relationFK_Nutrients_NutrientCharacteristics = new global::System.Data.DataRelation("FK_Nutrients_NutrientCharacteristics", new global::System.Data.DataColumn[] {
+                        this.tableNutrients.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableNutrientCharacteristics.NutrientIDColumn}, false);
+            this.Relations.Add(this.relationFK_Nutrients_NutrientCharacteristics);
+            this.relationFK_Foods_V_FoodQuantity = new global::System.Data.DataRelation("FK_Foods_V_FoodQuantity", new global::System.Data.DataColumn[] {
+                        this.tableFoods.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableV_FoodQuantity.FoodIDColumn}, false);
+            this.Relations.Add(this.relationFK_Foods_V_FoodQuantity);
+            this.relationFK_Nutrients_N_F_Relation = new global::System.Data.DataRelation("FK_Nutrients_N_F_Relation", new global::System.Data.DataColumn[] {
+                        this.tableNutrients.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableN_F_Relation.NutrientIDColumn}, false);
+            this.Relations.Add(this.relationFK_Nutrients_N_F_Relation);
+            this.relationFK_Foods_N_F_Relation = new global::System.Data.DataRelation("FK_Foods_N_F_Relation", new global::System.Data.DataColumn[] {
+                        this.tableFoods.IDColumn}, new global::System.Data.DataColumn[] {
+                        this.tableN_F_Relation.FoodIDColumn}, false);
+            this.Relations.Add(this.relationFK_Foods_N_F_Relation);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -796,8 +867,6 @@ namespace EquusModel {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class FoodCharacteristicsDataTable : global::System.Data.TypedTableBase<FoodCharacteristicsRow> {
             
-            private global::System.Data.DataColumn columnID;
-            
             private global::System.Data.DataColumn columnFoodID;
             
             private global::System.Data.DataColumn columnPrice;
@@ -837,14 +906,6 @@ namespace EquusModel {
             protected FoodCharacteristicsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -916,14 +977,16 @@ namespace EquusModel {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FoodCharacteristicsRow AddFoodCharacteristicsRow(int FoodID, double Price, double MinServings, double MaxServings) {
+            public FoodCharacteristicsRow AddFoodCharacteristicsRow(FoodsRow parentFoodsRowByFK_Foods_FoodCharacteristics, double Price, double MinServings, double MaxServings) {
                 FoodCharacteristicsRow rowFoodCharacteristicsRow = ((FoodCharacteristicsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        FoodID,
                         Price,
                         MinServings,
                         MaxServings};
+                if ((parentFoodsRowByFK_Foods_FoodCharacteristics != null)) {
+                    columnValuesArray[0] = parentFoodsRowByFK_Foods_FoodCharacteristics[0];
+                }
                 rowFoodCharacteristicsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowFoodCharacteristicsRow);
                 return rowFoodCharacteristicsRow;
@@ -931,9 +994,9 @@ namespace EquusModel {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public FoodCharacteristicsRow FindByID(int ID) {
+            public FoodCharacteristicsRow FindByFoodID(int FoodID) {
                 return ((FoodCharacteristicsRow)(this.Rows.Find(new object[] {
-                            ID})));
+                            FoodID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -953,7 +1016,6 @@ namespace EquusModel {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
                 this.columnFoodID = base.Columns["FoodID"];
                 this.columnPrice = base.Columns["Price"];
                 this.columnMinServings = base.Columns["MinServings"];
@@ -963,8 +1025,6 @@ namespace EquusModel {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
                 this.columnFoodID = new global::System.Data.DataColumn("FoodID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFoodID);
                 this.columnPrice = new global::System.Data.DataColumn("Price", typeof(double), null, global::System.Data.MappingType.Element);
@@ -974,14 +1034,9 @@ namespace EquusModel {
                 this.columnMaxServings = new global::System.Data.DataColumn("MaxServings", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaxServings);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.ReadOnly = true;
-                this.columnID.Unique = true;
+                                this.columnFoodID}, true));
                 this.columnFoodID.AllowDBNull = false;
+                this.columnFoodID.Unique = true;
                 this.columnPrice.AllowDBNull = false;
                 this.columnMinServings.AllowDBNull = false;
                 this.columnMaxServings.AllowDBNull = false;
@@ -1394,8 +1449,6 @@ namespace EquusModel {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class NutrientCharacteristicsDataTable : global::System.Data.TypedTableBase<NutrientCharacteristicsRow> {
             
-            private global::System.Data.DataColumn columnID;
-            
             private global::System.Data.DataColumn columnNutrientID;
             
             private global::System.Data.DataColumn columnMinNutrient;
@@ -1433,14 +1486,6 @@ namespace EquusModel {
             protected NutrientCharacteristicsDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1504,13 +1549,15 @@ namespace EquusModel {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NutrientCharacteristicsRow AddNutrientCharacteristicsRow(int NutrientID, double MinNutrient, double MaxNutrient) {
+            public NutrientCharacteristicsRow AddNutrientCharacteristicsRow(NutrientsRow parentNutrientsRowByFK_Nutrients_NutrientCharacteristics, double MinNutrient, double MaxNutrient) {
                 NutrientCharacteristicsRow rowNutrientCharacteristicsRow = ((NutrientCharacteristicsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        NutrientID,
                         MinNutrient,
                         MaxNutrient};
+                if ((parentNutrientsRowByFK_Nutrients_NutrientCharacteristics != null)) {
+                    columnValuesArray[0] = parentNutrientsRowByFK_Nutrients_NutrientCharacteristics[0];
+                }
                 rowNutrientCharacteristicsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowNutrientCharacteristicsRow);
                 return rowNutrientCharacteristicsRow;
@@ -1518,9 +1565,9 @@ namespace EquusModel {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public NutrientCharacteristicsRow FindByID(int ID) {
+            public NutrientCharacteristicsRow FindByNutrientID(int NutrientID) {
                 return ((NutrientCharacteristicsRow)(this.Rows.Find(new object[] {
-                            ID})));
+                            NutrientID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1540,7 +1587,6 @@ namespace EquusModel {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
                 this.columnNutrientID = base.Columns["NutrientID"];
                 this.columnMinNutrient = base.Columns["MinNutrient"];
                 this.columnMaxNutrient = base.Columns["MaxNutrient"];
@@ -1549,8 +1595,6 @@ namespace EquusModel {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
                 this.columnNutrientID = new global::System.Data.DataColumn("NutrientID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNutrientID);
                 this.columnMinNutrient = new global::System.Data.DataColumn("MinNutrient", typeof(double), null, global::System.Data.MappingType.Element);
@@ -1558,14 +1602,9 @@ namespace EquusModel {
                 this.columnMaxNutrient = new global::System.Data.DataColumn("MaxNutrient", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMaxNutrient);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.ReadOnly = true;
-                this.columnID.Unique = true;
+                                this.columnNutrientID}, true));
                 this.columnNutrientID.AllowDBNull = false;
+                this.columnNutrientID.Unique = true;
                 this.columnMinNutrient.AllowDBNull = false;
                 this.columnMaxNutrient.AllowDBNull = false;
             }
@@ -1977,8 +2016,6 @@ namespace EquusModel {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class V_FoodQuantityDataTable : global::System.Data.TypedTableBase<V_FoodQuantityRow> {
             
-            private global::System.Data.DataColumn columnID;
-            
             private global::System.Data.DataColumn columnFoodID;
             
             private global::System.Data.DataColumn columnQuantity;
@@ -2014,14 +2051,6 @@ namespace EquusModel {
             protected V_FoodQuantityDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2077,12 +2106,14 @@ namespace EquusModel {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public V_FoodQuantityRow AddV_FoodQuantityRow(int FoodID, double Quantity) {
+            public V_FoodQuantityRow AddV_FoodQuantityRow(FoodsRow parentFoodsRowByFK_Foods_V_FoodQuantity, double Quantity) {
                 V_FoodQuantityRow rowV_FoodQuantityRow = ((V_FoodQuantityRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        FoodID,
                         Quantity};
+                if ((parentFoodsRowByFK_Foods_V_FoodQuantity != null)) {
+                    columnValuesArray[0] = parentFoodsRowByFK_Foods_V_FoodQuantity[0];
+                }
                 rowV_FoodQuantityRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowV_FoodQuantityRow);
                 return rowV_FoodQuantityRow;
@@ -2090,9 +2121,9 @@ namespace EquusModel {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public V_FoodQuantityRow FindByID(int ID) {
+            public V_FoodQuantityRow FindByFoodID(int FoodID) {
                 return ((V_FoodQuantityRow)(this.Rows.Find(new object[] {
-                            ID})));
+                            FoodID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2112,7 +2143,6 @@ namespace EquusModel {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
                 this.columnFoodID = base.Columns["FoodID"];
                 this.columnQuantity = base.Columns["Quantity"];
             }
@@ -2120,21 +2150,14 @@ namespace EquusModel {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
                 this.columnFoodID = new global::System.Data.DataColumn("FoodID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFoodID);
                 this.columnQuantity = new global::System.Data.DataColumn("Quantity", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnQuantity);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.ReadOnly = true;
-                this.columnID.Unique = true;
+                                this.columnFoodID}, true));
                 this.columnFoodID.AllowDBNull = false;
+                this.columnFoodID.Unique = true;
                 this.columnQuantity.AllowDBNull = false;
             }
             
@@ -2269,8 +2292,6 @@ namespace EquusModel {
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class N_F_RelationDataTable : global::System.Data.TypedTableBase<N_F_RelationRow> {
             
-            private global::System.Data.DataColumn columnID;
-            
             private global::System.Data.DataColumn columnFoodID;
             
             private global::System.Data.DataColumn columnNutrientID;
@@ -2308,14 +2329,6 @@ namespace EquusModel {
             protected N_F_RelationDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IDColumn {
-                get {
-                    return this.columnID;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2379,13 +2392,18 @@ namespace EquusModel {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public N_F_RelationRow AddN_F_RelationRow(int FoodID, int NutrientID, double NutrientPerFood) {
+            public N_F_RelationRow AddN_F_RelationRow(FoodsRow parentFoodsRowByFK_Foods_N_F_Relation, NutrientsRow parentNutrientsRowByFK_Nutrients_N_F_Relation, double NutrientPerFood) {
                 N_F_RelationRow rowN_F_RelationRow = ((N_F_RelationRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
-                        FoodID,
-                        NutrientID,
+                        null,
                         NutrientPerFood};
+                if ((parentFoodsRowByFK_Foods_N_F_Relation != null)) {
+                    columnValuesArray[0] = parentFoodsRowByFK_Foods_N_F_Relation[0];
+                }
+                if ((parentNutrientsRowByFK_Nutrients_N_F_Relation != null)) {
+                    columnValuesArray[1] = parentNutrientsRowByFK_Nutrients_N_F_Relation[0];
+                }
                 rowN_F_RelationRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowN_F_RelationRow);
                 return rowN_F_RelationRow;
@@ -2393,9 +2411,10 @@ namespace EquusModel {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public N_F_RelationRow FindByID(int ID) {
+            public N_F_RelationRow FindByFoodIDNutrientID(int FoodID, int NutrientID) {
                 return ((N_F_RelationRow)(this.Rows.Find(new object[] {
-                            ID})));
+                            FoodID,
+                            NutrientID})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2415,7 +2434,6 @@ namespace EquusModel {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnID = base.Columns["ID"];
                 this.columnFoodID = base.Columns["FoodID"];
                 this.columnNutrientID = base.Columns["NutrientID"];
                 this.columnNutrientPerFood = base.Columns["NutrientPerFood"];
@@ -2424,8 +2442,6 @@ namespace EquusModel {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnID = new global::System.Data.DataColumn("ID", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnID);
                 this.columnFoodID = new global::System.Data.DataColumn("FoodID", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnFoodID);
                 this.columnNutrientID = new global::System.Data.DataColumn("NutrientID", typeof(int), null, global::System.Data.MappingType.Element);
@@ -2433,13 +2449,8 @@ namespace EquusModel {
                 this.columnNutrientPerFood = new global::System.Data.DataColumn("NutrientPerFood", typeof(double), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnNutrientPerFood);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnID}, true));
-                this.columnID.AutoIncrement = true;
-                this.columnID.AutoIncrementSeed = -1;
-                this.columnID.AutoIncrementStep = -1;
-                this.columnID.AllowDBNull = false;
-                this.columnID.ReadOnly = true;
-                this.columnID.Unique = true;
+                                this.columnFoodID,
+                                this.columnNutrientID}, true));
                 this.columnFoodID.AllowDBNull = false;
                 this.columnNutrientID.AllowDBNull = false;
                 this.columnNutrientPerFood.AllowDBNull = false;
@@ -2644,17 +2655,6 @@ namespace EquusModel {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableFoodCharacteristics.IDColumn]));
-                }
-                set {
-                    this[this.tableFoodCharacteristics.IDColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int FoodID {
                 get {
                     return ((int)(this[this.tableFoodCharacteristics.FoodIDColumn]));
@@ -2694,6 +2694,17 @@ namespace EquusModel {
                 }
                 set {
                     this[this.tableFoodCharacteristics.MaxServingsColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FoodsRow FoodsRow {
+                get {
+                    return ((FoodsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Foods_FoodCharacteristics"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Foods_FoodCharacteristics"]);
                 }
             }
         }
@@ -2750,6 +2761,39 @@ namespace EquusModel {
             public void SetDescriptionNull() {
                 this[this.tableFoods.DescriptionColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public N_F_RelationRow[] GetN_F_RelationRows() {
+                if ((this.Table.ChildRelations["FK_Foods_N_F_Relation"] == null)) {
+                    return new N_F_RelationRow[0];
+                }
+                else {
+                    return ((N_F_RelationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Foods_N_F_Relation"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public V_FoodQuantityRow[] GetV_FoodQuantityRows() {
+                if ((this.Table.ChildRelations["FK_Foods_V_FoodQuantity"] == null)) {
+                    return new V_FoodQuantityRow[0];
+                }
+                else {
+                    return ((V_FoodQuantityRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Foods_V_FoodQuantity"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FoodCharacteristicsRow[] GetFoodCharacteristicsRows() {
+                if ((this.Table.ChildRelations["FK_Foods_FoodCharacteristics"] == null)) {
+                    return new FoodCharacteristicsRow[0];
+                }
+                else {
+                    return ((FoodCharacteristicsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Foods_FoodCharacteristics"])));
+                }
+            }
         }
         
         /// <summary>
@@ -2764,17 +2808,6 @@ namespace EquusModel {
             internal NutrientCharacteristicsRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableNutrientCharacteristics = ((NutrientCharacteristicsDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableNutrientCharacteristics.IDColumn]));
-                }
-                set {
-                    this[this.tableNutrientCharacteristics.IDColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2807,6 +2840,17 @@ namespace EquusModel {
                 }
                 set {
                     this[this.tableNutrientCharacteristics.MaxNutrientColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NutrientsRow NutrientsRow {
+                get {
+                    return ((NutrientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Nutrients_NutrientCharacteristics"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Nutrients_NutrientCharacteristics"]);
                 }
             }
         }
@@ -2863,6 +2907,28 @@ namespace EquusModel {
             public void SetDescriptionNull() {
                 this[this.tableNutrients.DescriptionColumn] = global::System.Convert.DBNull;
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public N_F_RelationRow[] GetN_F_RelationRows() {
+                if ((this.Table.ChildRelations["FK_Nutrients_N_F_Relation"] == null)) {
+                    return new N_F_RelationRow[0];
+                }
+                else {
+                    return ((N_F_RelationRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Nutrients_N_F_Relation"])));
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NutrientCharacteristicsRow[] GetNutrientCharacteristicsRows() {
+                if ((this.Table.ChildRelations["FK_Nutrients_NutrientCharacteristics"] == null)) {
+                    return new NutrientCharacteristicsRow[0];
+                }
+                else {
+                    return ((NutrientCharacteristicsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_Nutrients_NutrientCharacteristics"])));
+                }
+            }
         }
         
         /// <summary>
@@ -2877,17 +2943,6 @@ namespace EquusModel {
             internal V_FoodQuantityRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableV_FoodQuantity = ((V_FoodQuantityDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableV_FoodQuantity.IDColumn]));
-                }
-                set {
-                    this[this.tableV_FoodQuantity.IDColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2911,6 +2966,17 @@ namespace EquusModel {
                     this[this.tableV_FoodQuantity.QuantityColumn] = value;
                 }
             }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FoodsRow FoodsRow {
+                get {
+                    return ((FoodsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Foods_V_FoodQuantity"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Foods_V_FoodQuantity"]);
+                }
+            }
         }
         
         /// <summary>
@@ -2925,17 +2991,6 @@ namespace EquusModel {
             internal N_F_RelationRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
                 this.tableN_F_Relation = ((N_F_RelationDataTable)(this.Table));
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int ID {
-                get {
-                    return ((int)(this[this.tableN_F_Relation.IDColumn]));
-                }
-                set {
-                    this[this.tableN_F_Relation.IDColumn] = value;
-                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2968,6 +3023,28 @@ namespace EquusModel {
                 }
                 set {
                     this[this.tableN_F_Relation.NutrientPerFoodColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public NutrientsRow NutrientsRow {
+                get {
+                    return ((NutrientsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Nutrients_N_F_Relation"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Nutrients_N_F_Relation"]);
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public FoodsRow FoodsRow {
+                get {
+                    return ((FoodsRow)(this.GetParentRow(this.Table.ParentRelations["FK_Foods_N_F_Relation"])));
+                }
+                set {
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_Foods_N_F_Relation"]);
                 }
             }
         }
@@ -3720,7 +3797,6 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "FoodCharacteristics";
-            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("FoodID", "FoodID");
             tableMapping.ColumnMappings.Add("Price", "Price");
             tableMapping.ColumnMappings.Add("MinServings", "MinServings");
@@ -3728,21 +3804,19 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[FoodCharacteristics] WHERE (([ID] = @Original_ID) AND ([FoodID" +
-                "] = @Original_FoodID) AND ([Price] = @Original_Price) AND ([MinServings] = @Orig" +
-                "inal_MinServings) AND ([MaxServings] = @Original_MaxServings))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [FoodCharacteristics] WHERE (([FoodID] = @Original_FoodID) AND ([Pric" +
+                "e] = @Original_Price) AND ([MinServings] = @Original_MinServings) AND ([MaxServi" +
+                "ngs] = @Original_MaxServings))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MinServings", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinServings", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxServings", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxServings", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[FoodCharacteristics] ([FoodID], [Price], [MinServings], [MaxSe" +
-                "rvings]) VALUES (@FoodID, @Price, @MinServings, @MaxServings);\r\nSELECT ID, FoodI" +
-                "D, Price, MinServings, MaxServings FROM FoodCharacteristics WHERE (ID = SCOPE_ID" +
-                "ENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [FoodCharacteristics] ([FoodID], [Price], [MinServings], [MaxServings" +
+                "]) VALUES (@FoodID, @Price, @MinServings, @MaxServings);\r\nSELECT FoodID, Price, " +
+                "MinServings, MaxServings FROM FoodCharacteristics WHERE (FoodID = @FoodID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -3750,19 +3824,17 @@ SELECT MigrationId, ContextKey, Model, ProductVersion FROM __MigrationHistory WH
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxServings", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxServings", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[FoodCharacteristics] SET [FoodID] = @FoodID, [Price] = @Price, [MinServings] = @MinServings, [MaxServings] = @MaxServings WHERE (([ID] = @Original_ID) AND ([FoodID] = @Original_FoodID) AND ([Price] = @Original_Price) AND ([MinServings] = @Original_MinServings) AND ([MaxServings] = @Original_MaxServings));
-SELECT ID, FoodID, Price, MinServings, MaxServings FROM FoodCharacteristics WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [FoodCharacteristics] SET [FoodID] = @FoodID, [Price] = @Price, [MinServings] = @MinServings, [MaxServings] = @MaxServings WHERE (([FoodID] = @Original_FoodID) AND ([Price] = @Original_Price) AND ([MinServings] = @Original_MinServings) AND ([MaxServings] = @Original_MaxServings));
+SELECT FoodID, Price, MinServings, MaxServings FROM FoodCharacteristics WHERE (FoodID = @FoodID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinServings", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinServings", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxServings", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxServings", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Price", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MinServings", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinServings", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxServings", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxServings", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3778,7 +3850,7 @@ SELECT ID, FoodID, Price, MinServings, MaxServings FROM FoodCharacteristics WHER
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, FoodID, Price, MinServings, MaxServings FROM dbo.FoodCharacteristics";
+            this._commandCollection[0].CommandText = "SELECT FoodID, Price, MinServings, MaxServings FROM FoodCharacteristics";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -3839,12 +3911,11 @@ SELECT ID, FoodID, Price, MinServings, MaxServings FROM FoodCharacteristics WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, int Original_FoodID, double Original_Price, double Original_MinServings, double Original_MaxServings) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_FoodID));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_Price));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_MinServings));
-            this.Adapter.DeleteCommand.Parameters[4].Value = ((double)(Original_MaxServings));
+        public virtual int Delete(int Original_FoodID, double Original_Price, double Original_MinServings, double Original_MaxServings) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_FoodID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((double)(Original_Price));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_MinServings));
+            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_MaxServings));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3890,17 +3961,15 @@ SELECT ID, FoodID, Price, MinServings, MaxServings FROM FoodCharacteristics WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int FoodID, double Price, double MinServings, double MaxServings, int Original_ID, int Original_FoodID, double Original_Price, double Original_MinServings, double Original_MaxServings, int ID) {
+        public virtual int Update(int FoodID, double Price, double MinServings, double MaxServings, int Original_FoodID, double Original_Price, double Original_MinServings, double Original_MaxServings) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(FoodID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(Price));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(MinServings));
             this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(MaxServings));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_FoodID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(Original_Price));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_MinServings));
-            this.Adapter.UpdateCommand.Parameters[8].Value = ((double)(Original_MaxServings));
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(ID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_FoodID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(Original_Price));
+            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(Original_MinServings));
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((double)(Original_MaxServings));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -3921,8 +3990,8 @@ SELECT ID, FoodID, Price, MinServings, MaxServings FROM FoodCharacteristics WHER
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int FoodID, double Price, double MinServings, double MaxServings, int Original_ID, int Original_FoodID, double Original_Price, double Original_MinServings, double Original_MaxServings) {
-            return this.Update(FoodID, Price, MinServings, MaxServings, Original_ID, Original_FoodID, Original_Price, Original_MinServings, Original_MaxServings, Original_ID);
+        public virtual int Update(double Price, double MinServings, double MaxServings, int Original_FoodID, double Original_Price, double Original_MinServings, double Original_MaxServings) {
+            return this.Update(Original_FoodID, Price, MinServings, MaxServings, Original_FoodID, Original_Price, Original_MinServings, Original_MaxServings);
         }
     }
     
@@ -4349,44 +4418,39 @@ SELECT ID, FoodID, Price, MinServings, MaxServings FROM FoodCharacteristics WHER
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "NutrientCharacteristics";
-            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("NutrientID", "NutrientID");
             tableMapping.ColumnMappings.Add("MinNutrient", "MinNutrient");
             tableMapping.ColumnMappings.Add("MaxNutrient", "MaxNutrient");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[NutrientCharacteristics] WHERE (([ID] = @Original_ID) AND ([Nu" +
-                "trientID] = @Original_NutrientID) AND ([MinNutrient] = @Original_MinNutrient) AN" +
-                "D ([MaxNutrient] = @Original_MaxNutrient))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [NutrientCharacteristics] WHERE (([NutrientID] = @Original_NutrientID" +
+                ") AND ([MinNutrient] = @Original_MinNutrient) AND ([MaxNutrient] = @Original_Max" +
+                "Nutrient))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NutrientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MinNutrient", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinNutrient", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxNutrient", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxNutrient", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[NutrientCharacteristics] ([NutrientID], [MinNutrient], [MaxNut" +
-                "rient]) VALUES (@NutrientID, @MinNutrient, @MaxNutrient);\r\nSELECT ID, NutrientID" +
-                ", MinNutrient, MaxNutrient FROM NutrientCharacteristics WHERE (ID = SCOPE_IDENTI" +
-                "TY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [NutrientCharacteristics] ([NutrientID], [MinNutrient], [MaxNutrient]" +
+                ") VALUES (@NutrientID, @MinNutrient, @MaxNutrient);\r\nSELECT NutrientID, MinNutri" +
+                "ent, MaxNutrient FROM NutrientCharacteristics WHERE (NutrientID = @NutrientID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NutrientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinNutrient", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinNutrient", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxNutrient", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxNutrient", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[NutrientCharacteristics] SET [NutrientID] = @NutrientID, [MinNutrient] = @MinNutrient, [MaxNutrient] = @MaxNutrient WHERE (([ID] = @Original_ID) AND ([NutrientID] = @Original_NutrientID) AND ([MinNutrient] = @Original_MinNutrient) AND ([MaxNutrient] = @Original_MaxNutrient));
-SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [NutrientCharacteristics] SET [NutrientID] = @NutrientID, [MinNutrient] = @MinNutrient, [MaxNutrient] = @MaxNutrient WHERE (([NutrientID] = @Original_NutrientID) AND ([MinNutrient] = @Original_MinNutrient) AND ([MaxNutrient] = @Original_MaxNutrient));
+SELECT NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHERE (NutrientID = @NutrientID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NutrientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MinNutrient", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinNutrient", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@MaxNutrient", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxNutrient", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NutrientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MinNutrient", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MinNutrient", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_MaxNutrient", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "MaxNutrient", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4402,7 +4466,7 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM dbo.NutrientCharacteristics";
+            this._commandCollection[0].CommandText = "SELECT NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -4463,11 +4527,10 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, int Original_NutrientID, double Original_MinNutrient, double Original_MaxNutrient) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_NutrientID));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_MinNutrient));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_MaxNutrient));
+        public virtual int Delete(int Original_NutrientID, double Original_MinNutrient, double Original_MaxNutrient) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_NutrientID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((double)(Original_MinNutrient));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_MaxNutrient));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4512,15 +4575,13 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int NutrientID, double MinNutrient, double MaxNutrient, int Original_ID, int Original_NutrientID, double Original_MinNutrient, double Original_MaxNutrient, int ID) {
+        public virtual int Update(int NutrientID, double MinNutrient, double MaxNutrient, int Original_NutrientID, double Original_MinNutrient, double Original_MaxNutrient) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(NutrientID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(MinNutrient));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(MaxNutrient));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_NutrientID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(Original_MinNutrient));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(Original_MaxNutrient));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_NutrientID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(Original_MinNutrient));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(Original_MaxNutrient));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -4541,8 +4602,8 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int NutrientID, double MinNutrient, double MaxNutrient, int Original_ID, int Original_NutrientID, double Original_MinNutrient, double Original_MaxNutrient) {
-            return this.Update(NutrientID, MinNutrient, MaxNutrient, Original_ID, Original_NutrientID, Original_MinNutrient, Original_MaxNutrient, Original_ID);
+        public virtual int Update(double MinNutrient, double MaxNutrient, int Original_NutrientID, double Original_MinNutrient, double Original_MaxNutrient) {
+            return this.Update(Original_NutrientID, MinNutrient, MaxNutrient, Original_NutrientID, Original_MinNutrient, Original_MaxNutrient);
         }
     }
     
@@ -4969,39 +5030,33 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "V_FoodQuantity";
-            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("FoodID", "FoodID");
             tableMapping.ColumnMappings.Add("Quantity", "Quantity");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[V_FoodQuantity] WHERE (([ID] = @Original_ID) AND ([FoodID] = @" +
-                "Original_FoodID) AND ([Quantity] = @Original_Quantity))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [V_FoodQuantity] WHERE (([FoodID] = @Original_FoodID) AND ([Quantity]" +
+                " = @Original_Quantity))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[V_FoodQuantity] ([FoodID], [Quantity]) VALUES (@FoodID, @Quant" +
-                "ity);\r\nSELECT ID, FoodID, Quantity FROM V_FoodQuantity WHERE (ID = SCOPE_IDENTIT" +
-                "Y())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [V_FoodQuantity] ([FoodID], [Quantity]) VALUES (@FoodID, @Quantity);\r" +
+                "\nSELECT FoodID, Quantity FROM V_FoodQuantity WHERE (FoodID = @FoodID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[V_FoodQuantity] SET [FoodID] = @FoodID, [Quantity] = @Quantity WHER" +
-                "E (([ID] = @Original_ID) AND ([FoodID] = @Original_FoodID) AND ([Quantity] = @Or" +
-                "iginal_Quantity));\r\nSELECT ID, FoodID, Quantity FROM V_FoodQuantity WHERE (ID = " +
-                "@ID)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [V_FoodQuantity] SET [FoodID] = @FoodID, [Quantity] = @Quantity WHERE (([F" +
+                "oodID] = @Original_FoodID) AND ([Quantity] = @Original_Quantity));\r\nSELECT FoodI" +
+                "D, Quantity FROM V_FoodQuantity WHERE (FoodID = @FoodID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Quantity", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Quantity", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Quantity", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5017,7 +5072,7 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, FoodID, Quantity FROM dbo.V_FoodQuantity";
+            this._commandCollection[0].CommandText = "SELECT FoodID, Quantity FROM V_FoodQuantity";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5078,10 +5133,9 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, int Original_FoodID, double Original_Quantity) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_FoodID));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_Quantity));
+        public virtual int Delete(int Original_FoodID, double Original_Quantity) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_FoodID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((double)(Original_Quantity));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5125,13 +5179,11 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int FoodID, double Quantity, int Original_ID, int Original_FoodID, double Original_Quantity, int ID) {
+        public virtual int Update(int FoodID, double Quantity, int Original_FoodID, double Original_Quantity) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(FoodID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((double)(Quantity));
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_FoodID));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((double)(Original_Quantity));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(ID));
+            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(Original_FoodID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((double)(Original_Quantity));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5152,8 +5204,8 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int FoodID, double Quantity, int Original_ID, int Original_FoodID, double Original_Quantity) {
-            return this.Update(FoodID, Quantity, Original_ID, Original_FoodID, Original_Quantity, Original_ID);
+        public virtual int Update(double Quantity, int Original_FoodID, double Original_Quantity) {
+            return this.Update(Original_FoodID, Quantity, Original_FoodID, Original_Quantity);
         }
     }
     
@@ -5278,43 +5330,38 @@ SELECT ID, NutrientID, MinNutrient, MaxNutrient FROM NutrientCharacteristics WHE
             global::System.Data.Common.DataTableMapping tableMapping = new global::System.Data.Common.DataTableMapping();
             tableMapping.SourceTable = "Table";
             tableMapping.DataSetTable = "N_F_Relation";
-            tableMapping.ColumnMappings.Add("ID", "ID");
             tableMapping.ColumnMappings.Add("FoodID", "FoodID");
             tableMapping.ColumnMappings.Add("NutrientID", "NutrientID");
             tableMapping.ColumnMappings.Add("NutrientPerFood", "NutrientPerFood");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[N_F_Relation] WHERE (([ID] = @Original_ID) AND ([FoodID] = @Or" +
-                "iginal_FoodID) AND ([NutrientID] = @Original_NutrientID) AND ([NutrientPerFood] " +
-                "= @Original_NutrientPerFood))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [N_F_Relation] WHERE (([FoodID] = @Original_FoodID) AND ([NutrientID]" +
+                " = @Original_NutrientID) AND ([NutrientPerFood] = @Original_NutrientPerFood))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NutrientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NutrientPerFood", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientPerFood", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[N_F_Relation] ([FoodID], [NutrientID], [NutrientPerFood]) VALU" +
-                "ES (@FoodID, @NutrientID, @NutrientPerFood);\r\nSELECT ID, FoodID, NutrientID, Nut" +
-                "rientPerFood FROM N_F_Relation WHERE (ID = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [N_F_Relation] ([FoodID], [NutrientID], [NutrientPerFood]) VALUES (@F" +
+                "oodID, @NutrientID, @NutrientPerFood);\r\nSELECT FoodID, NutrientID, NutrientPerFo" +
+                "od FROM N_F_Relation WHERE (FoodID = @FoodID) AND (NutrientID = @NutrientID)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NutrientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NutrientPerFood", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientPerFood", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[N_F_Relation] SET [FoodID] = @FoodID, [NutrientID] = @NutrientID, [NutrientPerFood] = @NutrientPerFood WHERE (([ID] = @Original_ID) AND ([FoodID] = @Original_FoodID) AND ([NutrientID] = @Original_NutrientID) AND ([NutrientPerFood] = @Original_NutrientPerFood));
-SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [N_F_Relation] SET [FoodID] = @FoodID, [NutrientID] = @NutrientID, [NutrientPerFood] = @NutrientPerFood WHERE (([FoodID] = @Original_FoodID) AND ([NutrientID] = @Original_NutrientID) AND ([NutrientPerFood] = @Original_NutrientPerFood));
+SELECT FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (FoodID = @FoodID) AND (NutrientID = @NutrientID)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NutrientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@NutrientPerFood", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientPerFood", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_FoodID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "FoodID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NutrientID", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientID", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NutrientPerFood", global::System.Data.SqlDbType.Float, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NutrientPerFood", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ID", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "ID", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -5330,7 +5377,7 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID, FoodID, NutrientID, NutrientPerFood FROM dbo.N_F_Relation";
+            this._commandCollection[0].CommandText = "SELECT FoodID, NutrientID, NutrientPerFood FROM N_F_Relation";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -5391,11 +5438,10 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_ID, int Original_FoodID, int Original_NutrientID, double Original_NutrientPerFood) {
-            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_ID));
-            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_FoodID));
-            this.Adapter.DeleteCommand.Parameters[2].Value = ((int)(Original_NutrientID));
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((double)(Original_NutrientPerFood));
+        public virtual int Delete(int Original_FoodID, int Original_NutrientID, double Original_NutrientPerFood) {
+            this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_FoodID));
+            this.Adapter.DeleteCommand.Parameters[1].Value = ((int)(Original_NutrientID));
+            this.Adapter.DeleteCommand.Parameters[2].Value = ((double)(Original_NutrientPerFood));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5440,15 +5486,13 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int FoodID, int NutrientID, double NutrientPerFood, int Original_ID, int Original_FoodID, int Original_NutrientID, double Original_NutrientPerFood, int ID) {
+        public virtual int Update(int FoodID, int NutrientID, double NutrientPerFood, int Original_FoodID, int Original_NutrientID, double Original_NutrientPerFood) {
             this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(FoodID));
             this.Adapter.UpdateCommand.Parameters[1].Value = ((int)(NutrientID));
             this.Adapter.UpdateCommand.Parameters[2].Value = ((double)(NutrientPerFood));
-            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_ID));
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_FoodID));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(Original_NutrientID));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((double)(Original_NutrientPerFood));
-            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(ID));
+            this.Adapter.UpdateCommand.Parameters[3].Value = ((int)(Original_FoodID));
+            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(Original_NutrientID));
+            this.Adapter.UpdateCommand.Parameters[5].Value = ((double)(Original_NutrientPerFood));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -5469,8 +5513,8 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(int FoodID, int NutrientID, double NutrientPerFood, int Original_ID, int Original_FoodID, int Original_NutrientID, double Original_NutrientPerFood) {
-            return this.Update(FoodID, NutrientID, NutrientPerFood, Original_ID, Original_FoodID, Original_NutrientID, Original_NutrientPerFood, Original_ID);
+        public virtual int Update(double NutrientPerFood, int Original_FoodID, int Original_NutrientID, double Original_NutrientPerFood) {
+            return this.Update(Original_FoodID, Original_NutrientID, NutrientPerFood, Original_FoodID, Original_NutrientID, Original_NutrientPerFood);
         }
     }
     
@@ -5705,6 +5749,24 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateUpdatedRows(_EquusModel_Models_ModelContextDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allChangedRows, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._foodsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Foods.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._foodsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
+            if ((this._nutrientsTableAdapter != null)) {
+                global::System.Data.DataRow[] updatedRows = dataSet.Nutrients.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
+                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
+                if (((updatedRows != null) 
+                            && (0 < updatedRows.Length))) {
+                    result = (result + this._nutrientsTableAdapter.Update(updatedRows));
+                    allChangedRows.AddRange(updatedRows);
+                }
+            }
             if ((this.___MigrationHistoryTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.@__MigrationHistory.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
@@ -5723,30 +5785,12 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
                     allChangedRows.AddRange(updatedRows);
                 }
             }
-            if ((this._foodsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Foods.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._foodsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
             if ((this._nutrientCharacteristicsTableAdapter != null)) {
                 global::System.Data.DataRow[] updatedRows = dataSet.NutrientCharacteristics.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
                 updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
                 if (((updatedRows != null) 
                             && (0 < updatedRows.Length))) {
                     result = (result + this._nutrientCharacteristicsTableAdapter.Update(updatedRows));
-                    allChangedRows.AddRange(updatedRows);
-                }
-            }
-            if ((this._nutrientsTableAdapter != null)) {
-                global::System.Data.DataRow[] updatedRows = dataSet.Nutrients.Select(null, null, global::System.Data.DataViewRowState.ModifiedCurrent);
-                updatedRows = this.GetRealUpdatedRows(updatedRows, allAddedRows);
-                if (((updatedRows != null) 
-                            && (0 < updatedRows.Length))) {
-                    result = (result + this._nutrientsTableAdapter.Update(updatedRows));
                     allChangedRows.AddRange(updatedRows);
                 }
             }
@@ -5778,6 +5822,22 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private int UpdateInsertedRows(_EquusModel_Models_ModelContextDataSet dataSet, global::System.Collections.Generic.List<global::System.Data.DataRow> allAddedRows) {
             int result = 0;
+            if ((this._foodsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Foods.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._foodsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
+            if ((this._nutrientsTableAdapter != null)) {
+                global::System.Data.DataRow[] addedRows = dataSet.Nutrients.Select(null, null, global::System.Data.DataViewRowState.Added);
+                if (((addedRows != null) 
+                            && (0 < addedRows.Length))) {
+                    result = (result + this._nutrientsTableAdapter.Update(addedRows));
+                    allAddedRows.AddRange(addedRows);
+                }
+            }
             if ((this.___MigrationHistoryTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.@__MigrationHistory.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
@@ -5794,27 +5854,11 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
                     allAddedRows.AddRange(addedRows);
                 }
             }
-            if ((this._foodsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Foods.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._foodsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
             if ((this._nutrientCharacteristicsTableAdapter != null)) {
                 global::System.Data.DataRow[] addedRows = dataSet.NutrientCharacteristics.Select(null, null, global::System.Data.DataViewRowState.Added);
                 if (((addedRows != null) 
                             && (0 < addedRows.Length))) {
                     result = (result + this._nutrientCharacteristicsTableAdapter.Update(addedRows));
-                    allAddedRows.AddRange(addedRows);
-                }
-            }
-            if ((this._nutrientsTableAdapter != null)) {
-                global::System.Data.DataRow[] addedRows = dataSet.Nutrients.Select(null, null, global::System.Data.DataViewRowState.Added);
-                if (((addedRows != null) 
-                            && (0 < addedRows.Length))) {
-                    result = (result + this._nutrientsTableAdapter.Update(addedRows));
                     allAddedRows.AddRange(addedRows);
                 }
             }
@@ -5860,27 +5904,11 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
                     allChangedRows.AddRange(deletedRows);
                 }
             }
-            if ((this._nutrientsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Nutrients.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._nutrientsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
             if ((this._nutrientCharacteristicsTableAdapter != null)) {
                 global::System.Data.DataRow[] deletedRows = dataSet.NutrientCharacteristics.Select(null, null, global::System.Data.DataViewRowState.Deleted);
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this._nutrientCharacteristicsTableAdapter.Update(deletedRows));
-                    allChangedRows.AddRange(deletedRows);
-                }
-            }
-            if ((this._foodsTableAdapter != null)) {
-                global::System.Data.DataRow[] deletedRows = dataSet.Foods.Select(null, null, global::System.Data.DataViewRowState.Deleted);
-                if (((deletedRows != null) 
-                            && (0 < deletedRows.Length))) {
-                    result = (result + this._foodsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }
@@ -5897,6 +5925,22 @@ SELECT ID, FoodID, NutrientID, NutrientPerFood FROM N_F_Relation WHERE (ID = @ID
                 if (((deletedRows != null) 
                             && (0 < deletedRows.Length))) {
                     result = (result + this.___MigrationHistoryTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._nutrientsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Nutrients.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._nutrientsTableAdapter.Update(deletedRows));
+                    allChangedRows.AddRange(deletedRows);
+                }
+            }
+            if ((this._foodsTableAdapter != null)) {
+                global::System.Data.DataRow[] deletedRows = dataSet.Foods.Select(null, null, global::System.Data.DataViewRowState.Deleted);
+                if (((deletedRows != null) 
+                            && (0 < deletedRows.Length))) {
+                    result = (result + this._foodsTableAdapter.Update(deletedRows));
                     allChangedRows.AddRange(deletedRows);
                 }
             }

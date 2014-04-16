@@ -21,25 +21,17 @@ namespace EquusModel.Control
         //Solves classic Diet Model Optimization Problem
         public void solveModel()
         {
-            Stopwatch sw = new Stopwatch();
-            sw.Start();
-
-            int k=0;
-            for (int i = 1; i <= 10000; i++)
-                for (int j = 1; j <= 1000; j++)
-                    k = i + j;
-            sw.Stop();
-            Console.WriteLine("Elapsed: {0} seconds", sw.Elapsed);
-            //TransportSample.Run();
-            Excel.Workbook wb = Globals.ThisAddIn.Application.ActiveWorkbook;
+            Excel.Workbook wb = 
+                Globals.ThisAddIn.Application.ActiveWorkbook;
             if (Globals.ThisAddIn.Properties.ContainsKey(wb.Name))
             {
-                //TransportSample.Run();
-                OptimizationModel.Solve(Globals.ThisAddIn.Properties[wb.Name]);
+                OptimizationModel.Solve(Globals.ThisAddIn.Properties[wb.Name], wb);
             }
             else
             {
-                MessageBox.Show("Connection String not set.", "CBMP Model");
+                MessageBox.Show(
+                    "Workbook not validated to run the model.", 
+                    "Equus Optimization Manager");
             }
         }
     }
