@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Optimization.Framework</id>
+    <version>0.3.1236.0</version>
+    <title>Optimization.Framework</title>
+    <authors>Lars Beckmann</authors>
+    <owners>Lars Beckmann</owners>
+    <licenseUrl>http://www.optimizationzen.com/license</licenseUrl>
+    <projectUrl>http://www.optimizationzen.com/</projectUrl>
+    <iconUrl>http://www.optimizationzen.com/optimization.framework.jpg</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>The Optimization.Framework allows you to use C# as a modelling language for mathematical optimization. It furthermore allows you to use solvers as services.</description>
+    <summary>The Optimization.Framework allows you to use C# as a modelling language for mathematical optimization. It furthermore allows you to use solvers as services.</summary>
+    <language>en-US</language>
+  </metadata>
+</package>

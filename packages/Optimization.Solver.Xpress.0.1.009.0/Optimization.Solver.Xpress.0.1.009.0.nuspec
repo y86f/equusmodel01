@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>Optimization.Solver.Xpress</id>
+    <version>0.1.009.0</version>
+    <title>XpressSolver for Optimization.Framework</title>
+    <authors>Lars Beckmann,  Orconomy</authors>
+    <owners>Lars Beckmann,  Orconomy</owners>
+    <licenseUrl>http://www.optimizationzen.com/license/</licenseUrl>
+    <projectUrl>http://www.optimizationzen.com/</projectUrl>
+    <iconUrl>http://www.optimizationzen.com/optimization.framework.jpg</iconUrl>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <description>This is the XpressSolver library for the Optimization.Framework. The Optimization.Framework allows you to use C# as a modelling language for mathematical optimization. It furthermore allows you to use solvers as services.</description>
+    <summary>This is the XpressSolver library for the Optimization.Framework. The Optimization.Framework allows you to use C# as a modelling language for mathematical optimization. It furthermore allows you to use solvers as services.</summary>
+    <language>en-US</language>
+    <dependencies>
+      <dependency id="Optimization.Framework" version="0.3.940.0" />
+    </dependencies>
+  </metadata>
+</package>

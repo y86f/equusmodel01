@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Optimization.Solver.Xpress</name>
+    </assembly>
+    <members>
+        <member name="T:Optimization.Solver.Xpress.XpressExpressionVisitor">
+            <summary>
+            This is a helper class to create an expression for the SulumSolver visiting all nodes of an Optimization.Model.Expression
+            </summary>
+        </member>
+        <member name="T:Optimization.Solver.Xpress.XpressSolver">
+            <summary>
+            This class allows you to use Xpress from the Optimization.Framework
+            </summary>
+        </member>
+        <member name="M:Optimization.Solver.Xpress.XpressSolver.Solve(Optimization.Model,System.Collections.Generic.IDictionary{System.String,System.Double})">
+            <summary>
+            Solves the model
+            </summary>
+            <param name="model">The model</param>
+            <param name="variableValues">Starting values for the solution process</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

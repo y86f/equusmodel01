@@ -1,0 +1,100 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Optimization.Solver.GLPKSolver</name>
+    </assembly>
+    <members>
+        <member name="T:Optimization.Solver.GLPK.NativeFunctions">
+            <summary>
+            Class contains definitions some functions exposed by GLPK.Dll
+            </summary>
+            <remarks>
+            There are two types of glpk.dlls: The normal DLL and a modified DLL which writes errormessages to a file that will be read by this class.
+            If you use the nomal DLL, users won't get specific error info about type of error an line where it occured
+            </remarks>
+        </member>
+        <member name="T:Optimization.Solver.GLPK.GLPKSolver">
+            <summary>
+            GNU Linear Programming Kit (GLPK) Solver Interface for the Optimization.Framework
+            </summary>
+            <see cref="!:http://www.gnu.org/s/glpk/"/>
+            
+            <seealso cref="!:http://anna-at-work.bplaced.net/?p=31"/>
+            <seealso cref="!:http://www.optimizationzen.com"/>
+            
+            <author>SG</author>
+        </member>
+        <member name="M:Optimization.Solver.GLPK.GLPKSolver.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:System.Object"/> class.
+            </summary>
+        </member>
+        <member name="M:Optimization.Solver.GLPK.GLPKSolver.#ctor(System.Action{System.String})">
+            <summary>
+            Initializes a new instance of the GLPKLinearSolver class.
+            </summary>
+        </member>
+        <member name="M:Optimization.Solver.GLPK.GLPKSolver.ClearLastModel">
+            <summary>
+            Deletes the internal datastructures of this solver instance.
+            </summary>
+            <exception cref="T:System.InvalidOperationException">If this solver instance is busy.</exception>
+        </member>
+        <member name="M:Optimization.Solver.GLPK.GLPKSolver.Solve(Optimization.Model,System.Collections.Generic.IDictionary{System.String,System.Double})">
+            <summary>
+            Solves the specified model.
+            </summary>
+            <param name="model">The model.</param>
+            <param name="variableValues">The variable values.</param>
+            <returns>A solution object.</returns>
+        </member>
+        <member name="M:Optimization.Solver.GLPK.GLPKSolver.SolveProblem(System.Double*,System.Collections.ArrayList,System.Collections.ArrayList,System.Collections.ArrayList)">
+            <summary>
+            Solves a given linear problem using the simplex method
+            </summary>
+            <param name="lp">A pointer to the problem structure.</param>
+            <param name="_ia">The row array.</param>
+            <param name="_ja">The column array.</param>
+            <param name="_ar">The coefficients.</param>
+            <returns>True if solved successfully, otherwise false.</returns>
+        </member>
+        <member name="M:Optimization.Solver.GLPK.GLPKSolver.Abort">
+            <summary>
+            If this solver instance is busy abort the run as soon as possible, or do nothing if this solver instance is not busy.
+            </summary>
+            <exception cref="T:System.NotSupportedException">If this solver instance not supports aborting.</exception>
+        </member>
+        <member name="P:Optimization.Solver.GLPK.GLPKSolver.IsMixedIntegerModel">
+            <summary>
+            True, if model is a (mixed) integer model
+            </summary>
+        </member>
+        <member name="P:Optimization.Solver.GLPK.GLPKSolver.Configuration">
+            <summary>
+            The configuration of this solver instance.
+            </summary>
+            <value></value>
+        </member>
+        <member name="P:Optimization.Solver.GLPK.GLPKSolver.IsBusy">
+            <summary>
+            Is this solver instance busy?
+            </summary>
+            <value></value>
+        </member>
+        <member name="T:Optimization.Solver.GLPK.ExtensionMethods">
+            <summary>
+            Extension methods related to GLPK
+            </summary>
+        </member>
+        <member name="M:Optimization.Solver.GLPK.ExtensionMethods.Load(Optimization.Model,System.String,System.String,System.String)">
+            <summary>
+            Read Mathprog model into an OptimizationFramework model
+            </summary>
+            <param name="model">This model</param>
+            <param name="modFilename">.mod file name</param>
+            <param name="datFilename">.dat file name (optional)</param>
+            <param name="outputFilename">output file name (optional)</param>
+            <returns>OptimizationFramework model, filled with model data from MathProg</returns>
+        </member>
+    </members>
+</doc>
