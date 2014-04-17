@@ -203,9 +203,12 @@
     <Compile Include="Migrations\201404161436014_Initial.Designer.cs">
       <DependentUpon>201404161436014_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201404171513172_Migration1.cs" />
+    <Compile Include="Migrations\201404171513172_Migration1.Designer.cs">
+      <DependentUpon>201404171513172_Migration1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\EntityBase.cs" />
-    <Compile Include="Models\TransportSample.cs" />
     <Compile Include="OptimizationManagerRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -249,6 +252,9 @@
     </Compile>
     <EmbeddedResource Include="Migrations\201404161436014_Initial.resx">
       <DependentUpon>201404161436014_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201404171513172_Migration1.resx">
+      <DependentUpon>201404171513172_Migration1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OptimizationManagerRibbon.resx">
       <DependentUpon>OptimizationManagerRibbon.cs</DependentUpon>

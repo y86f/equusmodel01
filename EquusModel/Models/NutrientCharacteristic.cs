@@ -13,8 +13,8 @@ namespace EquusModel.Models
         [Key,
         DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int NutrientID { get; set; }
-        public double MinNutrient { get; set; }
-        public double MaxNutrient { get; set; }
+        public double? MinNutrient { get; set; }
+        public double? MaxNutrient { get; set; }
 
     }
 }

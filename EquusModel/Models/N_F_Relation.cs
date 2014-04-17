@@ -16,6 +16,6 @@ namespace EquusModel.Models
         [Key, Column(Order = 2),
         DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int NutrientID { get; set; }
-        public double NutrientPerFood { get; set; }
+        public double? NutrientPerFood { get; set; }
     }
 }

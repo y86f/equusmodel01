@@ -14,7 +14,7 @@ namespace EquusModel.Models
         DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int FoodID { get; set; }
         public double Price { get; set; }
-        public double MinServings { get; set; }
-        public double MaxServings { get; set; }
+        public double? MinServings { get; set; }
+        public double? MaxServings { get; set; }
     }
 }

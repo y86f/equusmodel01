@@ -68,13 +68,19 @@ namespace EquusModel.Migrations
                                 MaxNutrient = r.Next(20, 30)
                             };
                     }
-                    nfRel[i * nNutrients + j] =
-                        new N_F_Relation
-                        {
-                            FoodID = i,
-                            NutrientID = j,
-                            NutrientPerFood = r.Next(0, 4)
-                        };
+                    // defines coefficients to half the combinations (upper left corner and bottom right corner of the matrix)
+                    if ((i <= nFoods / 2 && j <= nNutrients / 2) || (i > nFoods / 2 && j > nNutrients / 2))
+                    {
+                        nfRel[i * nNutrients + j] =
+                            new N_F_Relation
+                            {
+                                FoodID = i,
+                                NutrientID = j,
+                                NutrientPerFood = r.Next(0, 4)
+                            };
+                        context.N_F_Relations.Add(nfRel[i * nNutrients + j]);
+                    }
+                        
                 }
                 temp = false;
             }
@@ -82,7 +88,6 @@ namespace EquusModel.Migrations
             context.FoodCharacteristics.AddRange(foodChar);
             context.Nutrients.AddRange(nutr);
             context.NutrientCharacteristics.AddRange(nutrChar);
-            context.N_F_Relations.AddRange(nfRel);
 
             context.SaveChanges();
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
