@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
 namespace EquusModel.Models
 {
@@ -11,6 +12,8 @@ namespace EquusModel.Models
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
+        
+        [MaxLength]
         public string Description { get; set; }
     }
 }

@@ -12,20 +12,25 @@ namespace EquusModel.Control
     [ComVisible(true)]
     public interface IAddinMethods
     {
-        void solveModel();
+        void SolveModel();
+        void GenerateData();
     }
+
     [ComVisible(true)]
     [ClassInterface(ClassInterfaceType.None)]
     public class AddInMethods : IAddinMethods
     {
         //Solves classic Diet Model Optimization Problem
-        public void solveModel()
+        public void SolveModel()
         {
             Excel.Workbook wb = 
                 Globals.ThisAddIn.Application.ActiveWorkbook;
             if (Globals.ThisAddIn.Properties.ContainsKey(wb.Name))
             {
-                OptimizationModel.Solve(Globals.ThisAddIn.Properties[wb.Name], wb);
+                if (false)
+                    OptimizationModel.Solve(Globals.ThisAddIn.Properties[wb.Name], wb);
+                else
+                    GurobiModel.Solve(Globals.ThisAddIn.Properties[wb.Name], wb);
             }
             else
             {
@@ -33,6 +38,16 @@ namespace EquusModel.Control
                     "Workbook not validated to run the model.", 
                     "Equus Optimization Manager");
             }
+        }
+        public void GenerateData()
+        {
+            Stopwatch sw = new Stopwatch();
+            sw.Start();
+
+            ModelContext.Seed(new ModelContext(), true);
+
+            sw.Stop();
+            MessageBox.Show(string.Format("Time Elapsed: {0}", sw.Elapsed), "Csv Generation");
         }
     }
 }

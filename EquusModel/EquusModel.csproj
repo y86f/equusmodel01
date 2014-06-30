@@ -134,11 +134,26 @@
   -->
   <ItemGroup>
     <Reference Include="Accessibility" />
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Gurobi56.NET">
+      <HintPath>..\..\..\..\..\..\..\gurobi563\win64\bin\Gurobi56.NET.dll</HintPath>
+    </Reference>
+    <Reference Include="GurobiPlugin">
+      <HintPath>C:\Program Files\Microsoft Solver Foundation\3.0.2.10889\Plugins\GurobiPlugin.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\MySql.Data.6.8.3\lib\net45\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="mysql.data.entity.EF6, Version=6.8.3.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <HintPath>..\packages\MySql.Data.Entities.6.8.3.0\lib\net45\mysql.data.entity.EF6.dll</HintPath>
     </Reference>
     <Reference Include="Optimization.Framework">
       <HintPath>..\packages\Optimization.Framework.0.3.1236.0\lib\net40\Optimization.Framework.dll</HintPath>
@@ -152,9 +167,9 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Design" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
@@ -199,16 +214,18 @@
   -->
   <ItemGroup>
     <Compile Include="Control\AddInMethods.cs" />
-    <Compile Include="Migrations\201404161436014_Initial.cs" />
-    <Compile Include="Migrations\201404161436014_Initial.Designer.cs">
+    <Compile Include="TEMP FOLDER\201404161436014_Initial.cs" />
+    <Compile Include="TEMP FOLDER\201404161436014_Initial.Designer.cs">
       <DependentUpon>201404161436014_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201404171513172_Migration1.cs" />
-    <Compile Include="Migrations\201404171513172_Migration1.Designer.cs">
+    <Compile Include="TEMP FOLDER\201404171513172_Migration1.cs" />
+    <Compile Include="TEMP FOLDER\201404171513172_Migration1.Designer.cs">
       <DependentUpon>201404171513172_Migration1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Migrations\MySqlHistoryContext.cs" />
     <Compile Include="Models\EntityBase.cs" />
+    <Compile Include="Models\GurobiModel.cs" />
     <Compile Include="OptimizationManagerRibbon.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -250,10 +267,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>_EquusModel_Models_ModelContextDataSet.xsd</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Migrations\201404161436014_Initial.resx">
+    <EmbeddedResource Include="TEMP FOLDER\201404161436014_Initial.resx">
       <DependentUpon>201404161436014_Initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201404171513172_Migration1.resx">
+    <EmbeddedResource Include="TEMP FOLDER\201404171513172_Migration1.resx">
       <DependentUpon>201404171513172_Migration1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="OptimizationManagerRibbon.resx">
@@ -272,7 +289,9 @@
     <EmbeddedResource Include="View\OptimizationManagerTaskPane.resx">
       <DependentUpon>OptimizationManagerTaskPane.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="EquusModel_TemporaryKey.pfx" />
     <None Include="OptimizationConfigSection.csd.xsd">
       <SubType>Designer</SubType>
